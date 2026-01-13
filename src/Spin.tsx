@@ -1,4 +1,4 @@
-import { Star, TriangleAlert } from "lucide-react";
+import { TriangleAlert, TvMinimal } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import ModalConfirm from "./components/ModalConfirm";
@@ -143,12 +143,14 @@ export default function Spin() {
     <div className="h-screen w-screen relative p-2 overflow-hidden">
       {findAward && (
         <div className="absolute bg-[#7f0c09] top-8 right-8 z-80 shadow-2xl shadow-black p-4 rounded-2xl">
-          <img src={`/images/${findAward.name}.svg`} alt="" className="w-52 h-auto" />
+          <img src={`/images/${findAward.name}.svg`} alt="" className="w-32 h-auto" />
         </div>
       )}
-      <Link to="/" className="absolute w-12 h-auto top-2 left-4 bg-cover bg-center z-90">
-        <img src="/images/logo.png" alt="" className="" />
-      </Link>
+      <div className="absolute w-12 h-12 top-2 left-4 bg-cover bg-center z-90">
+        <Link to="/">
+          <img src="/images/logo.png" alt="" className="cursor-pointer" />
+        </Link>
+      </div>
       {/* <audio ref={audioRefSpinning}>
         <source src="/sounds/xoso.mp3" type="audio/mpeg" />
       </audio>
@@ -156,14 +158,18 @@ export default function Spin() {
         <source src="/sounds/tada.mp3" type="audio/mpeg" />
       </audio> */}
       {!isSpinning && !currentUser && (
-        <div className="z-90 absolute right-1 bottom-1">
+        <div className="z-80 absolute right-1 bottom-1">
           <select
             value={award}
             onChange={(e) => {
-              if (e.target.value === "dacbiet" && confirm("Xác nhận quay giải đặc biệt")) {
-                resetBlackList();
+              if (e.target.value === "dacbiet") {
+                if (confirm("Xác nhận quay giải đặc biệt")) {
+                  resetBlackList();
+                  navigate("/spin/" + e.target.value);
+                }
+              } else {
+                navigate("/spin/" + e.target.value);
               }
-              navigate("/spin/" + e.target.value);
             }}
             className="text-[#f0b100] bg-[#9e0d08] font-bold uppercase block w-auto p-2 px-1 text-center bg-neutral-secondary-medium rounded-lg border-2 border-default-medium border-[#f0b100] text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body"
           >
@@ -211,8 +217,8 @@ export default function Spin() {
         </div>
       )}
 
-      <div className="relative z-20 w-full h-full grid grid-rows-3">
-        <div className="flex  flex-col justify-center items-center text-2xl uppercase mx-auto">
+      <div className="relative z-20 w-full h-full grid grid-rows-3 mt-10">
+        <div className="flex  flex-col justify-center items-center text-2xl mx-auto">
           {findAward && (
             <div className="flex flex-col gap-4 items-center justify-center text-[#f3d170] relative">
               {/* <img
@@ -220,7 +226,7 @@ export default function Spin() {
                 alt=""
                 className="w-full absolute top-0 left-0 h-full"
               /> */}
-              <div className="flex items-center gap-4">
+              {/* <div className="flex items-center gap-4">
                 <div className="flex">
                   <Star size={40} color="#f8ce10" />
                   <Star size={40} color="#f8ce10" />
@@ -234,14 +240,22 @@ export default function Spin() {
                   <Star size={40} color="#f8ce10" />
                   <Star size={40} color="#f8ce10" />
                 </div>
-              </div>
-              {findAward.money && findAward.qty && (
-                <h2 className="text-4xl font-bold">
-                  {findAward.qty} giải - Trị giá {findAward.money}
-                </h2>
-              )}
-              <div className="text-4xl font-semibold flex items-center gap-4">
-                {findAward.name !== "dacbiet" && <span>Lần quay thứ {awardList.length + 1}</span>}
+              </div> */}
+
+              <div className="flex items-center gap-8 relative ">
+                {findAward.qty && (
+                  <h2 className="absolute right-full mr-4 font-bold text-9xl italic text-[white] drop-shadow-[0_0_10px_#000]">
+                    {findAward.qty}
+                  </h2>
+                )}
+                <div className="flex flex-col gap-4 items-center justify-center">
+                  <div className="flex items-center gap-2">
+                    <span className="uppercase font-black text-5xl text-[#f7e71e]">
+                      {findAward.title}
+                    </span>
+                  </div>
+                  {findAward.money && <span className="text-4xl font-bold">{findAward.money}</span>}
+                </div>
               </div>
             </div>
           )}
@@ -278,25 +292,37 @@ export default function Spin() {
           ) : (
             !isSpinning &&
             !currentUser && (
-              <div className="w-1/6 relative flex items-center justify-center mx-auto">
+              <div className="w-1/6 pt-10 h-full flex flex-col gap-8 items-center">
+                <span className="text-2xl font-semibold uppercase italic text-[#f4dd73]">
+                  Lần quay thứ {awardList.length + 1}
+                </span>
                 <button
                   onClick={handleSpin}
                   disabled={isSpinning}
-                  className="w-48 cursor-pointer flex flex-col justify-center items-center relative disabled:opacity-50"
+                  className="pt-2 relative w-48 cursor-pointer flex flex-col justify-center items-center disabled:opacity-50"
                 >
                   <img className="absolute w-full z-10" src="/images/button.png" alt="" />
-                  <span className="absolute z-20 w-full text-[#f4dd73] font-bold text-3xl uppercase">
+                  <span className="z-20 w-full text-[#f4dd73] font-bold text-3xl uppercase">
                     Quay số
                   </span>
                 </button>
               </div>
             )
           )}
-          <h1 className="absolute bottom-0 text-[#ff0] tet-font text-4xl font-bold animate-blink">
-            Chúc Mừng Năm Mới - Vạn Sự Như Ý
-          </h1>
         </div>
       </div>
+      <div className="absolute top-1 w-full z-70 flex justify-center items-center">
+        <h1 className="text-[#ff0] tet-font text-4xl font-bold">
+          Chúc Mừng Năm Mới - Vạn Sự Như Ý
+        </h1>
+      </div>
+      {won.find((a) => a.name === "dacbiet")?.index.length && (
+        <div className="absolute top-1 right-1 w-8 z-90 flex justify-center items-center text-white">
+          <Link to={"/dacbiet"}>
+            <TvMinimal />
+          </Link>
+        </div>
+      )}
     </div>
   );
 }

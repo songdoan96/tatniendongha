@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { awards } from "./libs/awards";
 import useAwardStore from "./stores/award-store";
+import { TvMinimal } from "lucide-react";
 
 export default function App() {
   const navigate = useNavigate();
@@ -34,6 +35,11 @@ export default function App() {
       >
         CÔNG TY MAY HÒA THỌ ĐÔNG HÀ
       </h1>
+      <div className="absolute top-1 right-1 w-8 z-90 flex justify-center items-center text-white">
+        <Link to={"/dacbiet"}>
+          <TvMinimal />
+        </Link>
+      </div>
       <div className="z-60 absolute h-full top-0 pt-12 -left-8 flex flex-col justify-center gap-8">
         {awards.map((award) => {
           const count = won.find((a) => a.name === award.name)?.index.length;
