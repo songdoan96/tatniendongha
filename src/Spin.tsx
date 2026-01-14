@@ -77,11 +77,6 @@ export default function Spin() {
     if (!isSpinning) return;
     setTimeout(() => {
       setIsSpinning(false);
-      // stopMusic();
-      // if (audioRefResult.current) {
-      //   audioRefResult.current.currentTime = 0;
-      //   audioRefResult.current.play();
-      // }
     }, totalDelay);
   }, [isSpinning]);
 
@@ -151,12 +146,6 @@ export default function Spin() {
           <img src="/images/logo.png" alt="" className="cursor-pointer" />
         </Link>
       </div>
-      {/* <audio ref={audioRefSpinning}>
-        <source src="/sounds/xoso.mp3" type="audio/mpeg" />
-      </audio>
-      <audio ref={audioRefResult}>
-        <source src="/sounds/tada.mp3" type="audio/mpeg" />
-      </audio> */}
       {!isSpinning && !currentUser && (
         <div className="z-80 absolute right-1 bottom-1">
           <select

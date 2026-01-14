@@ -12,6 +12,7 @@ interface AwardState {
   }[];
   addWon: (name: AwardType["name"], index: number) => void;
   resetAll: () => void;
+  remove: (index: number) => void;
 }
 
 const useAwardStore = create<AwardState>()(
@@ -51,6 +52,15 @@ const useAwardStore = create<AwardState>()(
           blacklist: [],
           won: [],
         });
+      },
+      remove(index) {
+        set((state) => ({
+          won: state.won.map((a) => ({
+            ...a,
+            index: a.index.filter((i) => i !== index),
+          })),
+          blacklist: state.blacklist.filter((i) => i !== index),
+        }));
       },
     }),
 

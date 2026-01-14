@@ -1,17 +1,17 @@
-import { Link } from "react-router-dom";
-import { employeesList } from "./libs/employees";
-import useAwardStore from "./stores/award-store";
 import { Home } from "lucide-react";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { employeesList, type EmployeesType } from "./libs/employees";
+import useAwardStore from "./stores/award-store";
 
 export default function Winner() {
   const { won } = useAwardStore();
-  const [winnerIndex, setWinnerIndex] = useState<number>();
+  const [winnerUser, setWinnerUser] = useState<EmployeesType>();
   useEffect(() => {
     const dacbiet = won.find((a) => a.name === "dacbiet")?.index;
-    const lastIndex = dacbiet?.pop();
+    const lastIndex = dacbiet?.[dacbiet.length - 1];
     if (lastIndex) {
-      setWinnerIndex(lastIndex);
+      setWinnerUser(employeesList.find((emp) => emp.stt === lastIndex));
     }
   }, [won]);
   return (
@@ -22,9 +22,7 @@ export default function Winner() {
           <Home />
         </Link>
       </div>
-      <h1 className="z-90 mt-44 uppercase text-5xl font-black text-white">
-        {winnerIndex && employeesList.find((e) => e.stt === winnerIndex)?.ten}
-      </h1>
+      <h1 className="z-90 mt-44 uppercase text-5xl font-black text-white">{winnerUser?.ten}</h1>
     </div>
   );
 }
