@@ -3,7 +3,7 @@ export interface EmployeesType {
   msnv: string;
   ten: string;
 }
-export const employeesList: EmployeesType[] = [
+export const employeesList3: EmployeesType[] = [
   { stt: 1, msnv: "9005", ten: "Lê Văn Hùng" },
   { stt: 2, msnv: "1548", ten: "Trần Thị Lan" },
   { stt: 3, msnv: "8234", ten: "Phạm Quang Minh" },
@@ -22,7 +22,7 @@ export const employeesList: EmployeesType[] = [
   { stt: 16, msnv: "9991", ten: "HUỲNH THỊ HỒNG HOA - KD2" },
 ];
 
-export const employeesList2: EmployeesType[] = [
+export const employeesList: EmployeesType[] = [
   { stt: 1, msnv: "2265", ten: "LÊ THỊ QUỲNH LÊ" },
   { stt: 2, msnv: "0096", ten: "NGUYỄN THỊ HỒNG PHƯỢNG" },
   { stt: 3, msnv: "1430", ten: "ĐOÀN THỊ LAN" },

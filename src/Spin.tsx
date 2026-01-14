@@ -1,4 +1,4 @@
-import { TriangleAlert, TvMinimal } from "lucide-react";
+import { Trash, TriangleAlert, TvMinimal } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import ModalConfirm from "./components/ModalConfirm";
@@ -15,7 +15,7 @@ const totalDelay = 5000;
 export default function Spin() {
   let { award } = useParams();
   const findAward = awards.find((awardItem) => awardItem.name === award);
-  const { blacklist, addWon, won, addBlacklist, resetBlackList } = useAwardStore();
+  const { blacklist, addWon, won, addBlacklist, resetBlackList, remove } = useAwardStore();
   const [currentUser, setCurrentUser] = useState<EmployeesType>();
   const navigate = useNavigate();
 
@@ -187,7 +187,8 @@ export default function Spin() {
             {awardList.map((stt, index) => (
               <div
                 key={index}
-                className={`font-semibold ${
+                data-stt={stt}
+                className={`flex items-center gap-1 font-semibold group ${
                   awardList.length > 32
                     ? "text-[10px]"
                     : awardList.length > 23
@@ -199,7 +200,19 @@ export default function Spin() {
                     : "text-2xl"
                 }`}
               >
-                {index + 1}. {employeesList.find((employee) => employee.stt === stt)?.ten}
+                <span>
+                  {index + 1}. {employeesList.find((employee) => employee.stt === stt)?.ten}
+                </span>
+                <button
+                  className="hidden group-hover:block cursor-pointer"
+                  onClick={() => {
+                    if (confirm("Xoá người nhận ?")) {
+                      remove(stt);
+                    }
+                  }}
+                >
+                  <Trash />
+                </button>
               </div>
             ))}
           </div>

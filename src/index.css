@@ -2,7 +2,7 @@
 
 @layer base {
   @font-face {
-    font-family: "Dancing Script", cursive;
+    font-family: "Dancing Script";
     src: url("/fonts/DancingScript-Bold.ttf") format("truetype");
     /* font-optical-sizing: auto; */
     /* font-weight: normal; */
