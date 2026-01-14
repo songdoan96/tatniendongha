@@ -295,9 +295,9 @@ export default function Spin() {
             !isSpinning &&
             !currentUser && (
               <div className="w-1/6 pt-10 h-full flex flex-col gap-8 items-center">
-                <span className="text-2xl font-semibold uppercase italic text-[#f4dd73]">
+                {/* <span className="text-2xl font-semibold uppercase italic text-[#f4dd73]">
                   Lần quay thứ {awardList.length + 1}
-                </span>
+                </span> */}
                 <button
                   onClick={handleSpin}
                   disabled={isSpinning}
