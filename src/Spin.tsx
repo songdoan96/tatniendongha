@@ -190,9 +190,9 @@ export default function Spin() {
                 data-stt={stt}
                 className={`flex items-center gap-1 font-semibold group ${
                   awardList.length > 32
-                    ? "text-[10px]"
-                    : awardList.length > 23
                     ? "text-[13px]"
+                    : awardList.length > 23
+                    ? "text-[15px]"
                     : awardList.length > 20
                     ? "text-[18px]"
                     : awardList.length > 15
@@ -246,7 +246,7 @@ export default function Spin() {
 
               <div className="flex items-center gap-8 relative ">
                 {findAward.qty && (
-                  <h2 className="absolute right-full mr-4 font-bold text-9xl italic text-[white] drop-shadow-[0_0_10px_#000]">
+                  <h2 className="absolute right-full mr-8 font-bold text-9xl italic text-[white] drop-shadow-[0_0_10px_#000]">
                     {findAward.qty}
                   </h2>
                 )}
@@ -314,6 +314,9 @@ export default function Spin() {
         </div>
       </div>
       <div className="absolute top-1 w-full z-70 flex justify-center items-center">
+        <h1 className="text-[#ff0] text-2xl font-bold uppercase">Công ty may hoà thọ đông hà</h1>
+      </div>
+      <div className="absolute bottom-1 w-full z-70 flex justify-center items-center">
         <h1 className="text-[#ff0] tet-font text-4xl font-bold">
           Chúc Mừng Năm Mới - Vạn Sự Như Ý
         </h1>
