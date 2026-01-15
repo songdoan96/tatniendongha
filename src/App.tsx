@@ -46,7 +46,6 @@ export default function App() {
 
       <div className="z-60 absolute h-full top-0 pt-12 -left-8 flex flex-col justify-center gap-8">
         {awards.map((award) => {
-          const count = won.find((a) => a.name === award.name)?.index.length;
           if (award.name !== "dacbiet" && !award.name.startsWith("giaiphu")) {
             return (
               <Link
@@ -56,13 +55,20 @@ export default function App() {
               >
                 <img src={`/images/${award.name}.svg`} alt="" className="h-12 w-auto min-w-16" />
                 <span className="group-hover:text-blue-800">{award.title}</span>
-                {count && count > 0 ? (
+                {/* {count && count > 0 ? (
                   <div className="ml-auto pl-4">
                     <span className="absolute -right-2 border-2 shadow-2xl -top-3 h-10 w-10 rounded-full flex items-center justify-center bg-white text-[#f00]">
                       {count}
                     </span>
                   </div>
-                ) : null}
+                ) : null} */}
+                {award.qty && (
+                  <div className="ml-auto pl-4">
+                    <span className="absolute -right-2 border-2 shadow-2xl -top-3 h-10 w-10 rounded-full flex items-center justify-center bg-white text-[#f00]">
+                      {award.qty}
+                    </span>
+                  </div>
+                )}
               </Link>
             );
           }
