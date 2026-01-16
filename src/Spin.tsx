@@ -197,7 +197,7 @@ export default function Spin() {
                     ? "text-[18px]"
                     : awardList.length > 15
                     ? "text-xl"
-                    : "text-2xl"
+                    : "text-[22px]"
                 }`}
               >
                 <span>

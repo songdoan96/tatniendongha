@@ -31,7 +31,7 @@ export default function ModalConfirm({
                 <img
                   src={src}
                   alt=""
-                  className="w-full h-auto  object-contain"
+                  className="w-full h-auto max-h-100 object-contain"
                   onError={() => setSrc("/images/user.png")}
                 />
               </div>
