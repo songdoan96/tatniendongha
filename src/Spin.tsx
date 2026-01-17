@@ -321,13 +321,13 @@ export default function Spin() {
           Chúc Mừng Năm Mới - Vạn Sự Như Ý
         </h1>
       </div>
-      {
+      {!isSpinning && !currentUser && (
         <div className="absolute top-1 right-1 w-8 z-90 flex justify-center items-center text-white">
           <Link to={"/traothuong/" + findAward?.name}>
             <TvMinimal />
           </Link>
         </div>
-      }
+      )}
     </div>
   );
 }
