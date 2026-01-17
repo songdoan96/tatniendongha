@@ -37,8 +37,10 @@ export default function App() {
       <div className="z-60 absolute h-full top-0 pt-12 -left-8 flex flex-col justify-center gap-8">
         {awards.map((award) => {
           if (
-            (award.name !== "dacbiet" && !award.name.startsWith("giaiphu")) ||
-            award.name === "giaiphu"
+            (award.name !== "dacbiet" &&
+              !award.name.startsWith("khachhang") &&
+              !award.name.startsWith("giaiphu")) ||
+            award.name === "aurora"
           ) {
             return (
               <div
