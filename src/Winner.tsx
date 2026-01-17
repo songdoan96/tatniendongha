@@ -43,7 +43,7 @@ export default function Winner() {
       <img src="/images/dacbiet-bg.png" alt="" className="absolute top-0 w-full h-full" />
 
       <div className="absolute top-1 right-1 w-8 z-90 flex justify-center items-center text-white">
-        <Link to={"/"}>
+        <Link to={"/spin/" + award}>
           <Home />
         </Link>
       </div>
