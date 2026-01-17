@@ -10,8 +10,7 @@ const router = createBrowserRouter([
     element: <App />,
   },
   { path: "/spin/:award", element: <Spin /> },
-  { path: "/dacbiet", element: <Winner /> },
-  // <Route path="/spin/:award" element={<Spin />} />
+  { path: "/traothuong/:award", element: <Winner /> },
 ]);
 createRoot(document.getElementById("root")!).render(
   <>

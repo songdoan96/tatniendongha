@@ -1,12 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
 import { awards } from "./libs/awards";
 import useAwardStore from "./stores/award-store";
-import { TvMinimal } from "lucide-react";
 
 export default function App() {
   const navigate = useNavigate();
-  const { won, resetBlackList, resetAll } = useAwardStore();
-
+  const { resetBlackList, resetAll } = useAwardStore();
   return (
     <div className="w-screen h-screen relative">
       <button
@@ -36,40 +34,29 @@ export default function App() {
         CÔNG TY MAY HÒA THỌ ĐÔNG HÀ
       </h1>
 
-      {won.find((a) => a.name === "dacbiet")?.index.length && (
-        <div className="absolute top-1 right-1 w-8 z-90 flex justify-center items-center text-white">
-          <Link to={"/dacbiet"}>
-            <TvMinimal />
-          </Link>
-        </div>
-      )}
-
       <div className="z-60 absolute h-full top-0 pt-12 -left-8 flex flex-col justify-center gap-8">
         {awards.map((award) => {
           if (award.name !== "dacbiet" && !award.name.startsWith("giaiphu")) {
             return (
-              <Link
+              <div
                 key={award.name}
-                to={`/spin/${award.name}`}
-                className="cursor-pointer group inline-flex items-center gap-2 bg-white text-green-700 uppercase p-2 pl-8 text-2xl shadow-2xl rounded-br-lg font-bold hover:scale-105 transition-all hover:translate-x-10 relative"
+                className="group inline-flex items-center gap-2 bg-white text-green-700 uppercase p-2 pl-8 text-2xl shadow-2xl rounded-br-lg font-bold hover:scale-105 transition-all hover:translate-x-10 relative"
               >
                 <img src={`/images/${award.name}.svg`} alt="" className="h-12 w-auto min-w-16" />
-                <span className="group-hover:text-blue-800">{award.title}</span>
-                {/* {count && count > 0 ? (
-                  <div className="ml-auto pl-4">
-                    <span className="absolute -right-2 border-2 shadow-2xl -top-3 h-10 w-10 rounded-full flex items-center justify-center bg-white text-[#f00]">
-                      {count}
-                    </span>
-                  </div>
-                ) : null} */}
+                <Link key={award.name} to={`/spin/${award.name}`} className="cursor-pointer ">
+                  <span className="group-hover:text-blue-800">{award.title}</span>
+                </Link>
                 {award.qty && (
                   <div className="ml-auto pl-4">
-                    <span className="absolute -right-2 border-2 shadow-2xl -top-3 h-10 w-10 rounded-full flex items-center justify-center bg-white text-[#f00]">
+                    <Link
+                      to={`/traothuong/` + award.name}
+                      className="absolute -right-2 border-2 shadow-2xl -top-3 h-10 w-10 rounded-full flex items-center justify-center bg-white text-[#f00]"
+                    >
                       {award.qty}
-                    </span>
+                    </Link>
                   </div>
                 )}
-              </Link>
+              </div>
             );
           }
         })}
@@ -80,8 +67,10 @@ export default function App() {
           className="cta uppercase cursor-pointer font-black"
           onClick={() => {
             // shuffleList(false);
-            resetBlackList();
-            navigate("/spin/dacbiet", { replace: true });
+            if (confirm("Xác nhận quay giải đặc biệt")) {
+              resetBlackList();
+              navigate("/spin/dacbiet", { replace: true });
+            }
           }}
         >
           <span>Giải đặc biệt</span>

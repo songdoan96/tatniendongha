@@ -15,6 +15,8 @@ export type AwardNameType =
   | "giaiphu"
   | "giaiphu1"
   | "giaiphu2"
+  | "giaiphu3"
+  | "giaiphu4"
   | "dacbiet";
 
 export const awards: AwardType[] = [
@@ -27,6 +29,8 @@ export const awards: AwardType[] = [
   { name: "giaiphu", title: "giải phụ" },
   { name: "giaiphu1", title: "giải phụ" },
   { name: "giaiphu2", title: "giải phụ" },
+  { name: "giaiphu3", title: "giải phụ" },
+  { name: "giaiphu4", title: "giải phụ" },
   { name: "dacbiet", title: "giải đặc biệt", money: "3.000.000đ/giải", qty: 1 },
 ];
 export const LOCALSTORAGE_BLACKLIST_KEY = "blacklist";
