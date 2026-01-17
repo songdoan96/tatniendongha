@@ -96,7 +96,7 @@ export default function Winner() {
           <div className="h-2/5 w-full flex justify-around overflow-hidden flex-wrap">
             {winnerUsers2?.map((user, idx) => (
               <div
-                className={`w-1/4 text-center font-bold text-[yellow] ${
+                className={`w-1/4 text-center font-bold text-[yellow] line-clamp-1 ${
                   winnerUsers2.length > 20 ? "text-2xl" : "text-3xl"
                 }`}
                 key={idx}
