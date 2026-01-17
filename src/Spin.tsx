@@ -192,12 +192,12 @@ export default function Spin() {
                   awardList.length > 32
                     ? "text-[13px]"
                     : awardList.length > 23
-                    ? "text-[15px]"
-                    : awardList.length > 20
-                    ? "text-[18px]"
-                    : awardList.length > 15
-                    ? "text-xl"
-                    : "text-[22px]"
+                      ? "text-[15px]"
+                      : awardList.length > 20
+                        ? "text-[18px]"
+                        : awardList.length > 15
+                          ? "text-xl"
+                          : "text-[22px]"
                 }`}
               >
                 <span>
@@ -322,7 +322,7 @@ export default function Spin() {
         </h1>
       </div>
       {!isSpinning && !currentUser && (
-        <div className="absolute top-1 right-1 w-8 z-90 flex justify-center items-center text-white">
+        <div className="absolute top-4 right-1 w-8 z-90 flex justify-center items-center text-white">
           <Link to={"/traothuong/" + findAward?.name}>
             <TvMinimal />
           </Link>

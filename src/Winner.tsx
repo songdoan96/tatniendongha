@@ -42,7 +42,7 @@ export default function Winner() {
     <div className="w-screen h-screen relative flex justify-center items-center">
       <img src="/images/dacbiet-bg.png" alt="" className="absolute top-0 w-full h-full" />
 
-      <div className="absolute top-1 right-1 w-8 z-90 flex justify-center items-center text-white">
+      <div className="absolute top-4 right-1 w-8 z-90 flex justify-center items-center text-white">
         <Link to={"/spin/" + award}>
           <Home />
         </Link>
